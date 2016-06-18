@@ -22,16 +22,22 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.36506278478854504" green="0.53414741220627204" blue="0.64684909467713791" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bhI-U1-xl4">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bhI-U1-xl4">
                                 <rect key="frame" x="0.0" y="76" width="600" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="aqH-dW-mUu"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                 <connections>
                                     <action selector="topTextonEdit:" destination="vXZ-lx-hvc" eventType="editingDidBegin" id="L55-rV-Qrf"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="XF5-RA-XHX">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOT" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="XF5-RA-XHX">
                                 <rect key="frame" x="0.0" y="510" width="600" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="dKQ-5e-ZiC"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                 <connections>
@@ -65,28 +71,32 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem systemItem="flexibleSpace" id="sOc-A7-7SL"/>
-                                    <barButtonItem systemItem="cancel" id="MNg-bb-rfi"/>
+                                    <barButtonItem systemItem="cancel" id="MNg-bb-rfi">
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="vXZ-lx-hvc" id="pIo-IK-c4O"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="XF5-RA-XHX" firstAttribute="trailing" secondItem="CW3-kE-ADF" secondAttribute="trailing" id="1wc-6w-qzT"/>
                             <constraint firstItem="CW3-kE-ADF" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-20" id="6bW-7e-QjG"/>
-                            <constraint firstItem="bhI-U1-xl4" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-20" id="7fR-VH-fUk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MKA-0B-5mA" secondAttribute="trailing" constant="-20" id="A6U-oZ-L0L"/>
                             <constraint firstItem="MKA-0B-5mA" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="DC5-8m-BKm"/>
+                            <constraint firstItem="bhI-U1-xl4" firstAttribute="trailing" secondItem="vFQ-fq-T5k" secondAttribute="trailing" id="DLr-aQ-byS"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="CW3-kE-ADF" secondAttribute="bottom" id="E7W-NP-Syv"/>
-                            <constraint firstItem="XF5-RA-XHX" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-20" id="GbY-gy-lcj"/>
+                            <constraint firstItem="bhI-U1-xl4" firstAttribute="leading" secondItem="vFQ-fq-T5k" secondAttribute="leading" id="GCx-bg-dYx"/>
                             <constraint firstItem="MKA-0B-5mA" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-20" id="GiB-Np-UA1"/>
+                            <constraint firstItem="XF5-RA-XHX" firstAttribute="leading" secondItem="CW3-kE-ADF" secondAttribute="leading" id="HRW-PB-Vix"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vFQ-fq-T5k" secondAttribute="trailing" constant="-20" id="Kj7-7S-0N2"/>
                             <constraint firstItem="vFQ-fq-T5k" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="Ntb-YZ-WOs"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="MKA-0B-5mA" secondAttribute="bottom" id="XQo-LP-Dm5"/>
-                            <constraint firstItem="CW3-kE-ADF" firstAttribute="top" secondItem="XF5-RA-XHX" secondAttribute="bottom" constant="16" id="bi7-p6-erd"/>
+                            <constraint firstItem="CW3-kE-ADF" firstAttribute="top" secondItem="XF5-RA-XHX" secondAttribute="bottom" constant="16" id="dCy-nJ-naM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CW3-kE-ADF" secondAttribute="trailing" constant="-20" id="fhl-CT-tBd"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="XF5-RA-XHX" secondAttribute="trailing" constant="-20" id="h2U-7z-TbU"/>
                             <constraint firstItem="vFQ-fq-T5k" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-20" id="iMp-1P-BOM"/>
-                            <constraint firstItem="bhI-U1-xl4" firstAttribute="top" secondItem="vFQ-fq-T5k" secondAttribute="bottom" constant="32" id="mlv-yh-qyr"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bhI-U1-xl4" secondAttribute="trailing" constant="-20" id="rI0-aM-YB0"/>
+                            <constraint firstItem="bhI-U1-xl4" firstAttribute="top" secondItem="vFQ-fq-T5k" secondAttribute="bottom" constant="32" id="iaT-OI-YN3"/>
                         </constraints>
                     </view>
                     <connections>

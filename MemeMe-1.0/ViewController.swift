@@ -20,8 +20,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var botToolbar: UIToolbar!
     @IBOutlet weak var topToolbar: UIToolbar!
     
-    var initTop: Bool = false
-    var initBottom: Bool = false
     let memeTextAttributes = [
         NSStrokeColorAttributeName : UIColor.blackColor(),
         NSForegroundColorAttributeName : UIColor.whiteColor(),    NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
@@ -38,10 +36,14 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //set up textfields
         topText.delegate = self
         bottomText.delegate = self
         topText.defaultTextAttributes = memeTextAttributes
         bottomText.defaultTextAttributes = memeTextAttributes
+        topText.text = "TOP"
+        bottomText.text = "BOTTOM"
+     
         
         // dismiess keyboard when user taps anywhere else
         let tap : UITapGestureRecognizer
@@ -101,13 +103,15 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
    
     @IBAction func topTextonEdit(sender: UITextField) {
-        if initTop == false{topText.text = " "}
-        initTop = true
+        if topText.text == "TOP" {
+            topText.text = ""
+        }
     }
 
     @IBAction func bottomTextonEdit(sender: UITextField) {
-        if initBottom == false{bottomText.text = " "}
-        initBottom = true
+        if bottomText.text == "BOTTOM" {
+            bottomText.text = " "
+        }
     }
     
     @IBAction func pickAnImage(sender: AnyObject) {
@@ -124,10 +128,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.image = image
             shareButton.enabled = true
-            topText.text = "Top"
-            bottomText.text = "Bottom"
-            initTop = false
-            initBottom = false
+            topText.text = "TOP"
+            bottomText.text = "BOTTOM"
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
@@ -170,6 +172,10 @@ UINavigationControllerDelegate, UITextFieldDelegate {
 
     }
     
+    @IBAction func cancelButtonPressed(sender: AnyObject) {
+        imageView.image = nil
+        viewDidLoad()
+    }
     
     func save(memedImage: UIImage) {
         //Create the meme
