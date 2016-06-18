@@ -27,7 +27,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                 <connections>
-                                    <action selector="topTextonEdit:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="O4Y-B6-Nqf"/>
+                                    <action selector="topTextonEdit:" destination="vXZ-lx-hvc" eventType="editingDidBegin" id="L55-rV-Qrf"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="XF5-RA-XHX">
@@ -35,7 +35,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                 <connections>
-                                    <action selector="bottomTextonEdit:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="V0x-vT-wdv"/>
+                                    <action selector="bottomTextonEdit:" destination="vXZ-lx-hvc" eventType="editingDidBegin" id="4ju-dG-V0x"/>
                                 </connections>
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CW3-kE-ADF">

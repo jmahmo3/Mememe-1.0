@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController,UIImagePickerControllerDelegate,
-UINavigationControllerDelegate {
+UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
@@ -35,6 +35,41 @@ UINavigationControllerDelegate {
         let memedImage : UIImage
     }
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        topText.delegate = self
+        bottomText.delegate = self
+        topText.defaultTextAttributes = memeTextAttributes
+        bottomText.defaultTextAttributes = memeTextAttributes
+        
+        // dismiess keyboard when user taps anywhere else
+        let tap : UITapGestureRecognizer
+        tap = UITapGestureRecognizer.init(target: self, action: #selector(ViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+        unsubscribeFromKeyboardNotifications()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        if (imageView.image == nil) {
+            shareButton.enabled = false
+        }
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications()
+    }
+
+
     func keyboardWillShow(notification: NSNotification) {
         if bottomText.isFirstResponder() {
          view.frame.origin.y -= getKeyboardHeight(notification)
@@ -62,25 +97,9 @@ UINavigationControllerDelegate {
         NSNotificationCenter.defaultCenter().removeObserver(self, name:UIKeyboardWillHideNotification, object: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        topText.defaultTextAttributes = memeTextAttributes
-        bottomText.defaultTextAttributes = memeTextAttributes
-    }
     
-    override func viewWillAppear(animated: Bool) {
-        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
-        if (imageView.image == nil) {
-            shareButton.enabled = false
-        }
-        super.viewWillAppear(animated)
-        subscribeToKeyboardNotifications()
-    }
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        unsubscribeFromKeyboardNotifications()
-    }
-
+    
+   
     @IBAction func topTextonEdit(sender: UITextField) {
         if initTop == false{topText.text = " "}
         initTop = true
@@ -105,6 +124,10 @@ UINavigationControllerDelegate {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.image = image
             shareButton.enabled = true
+            topText.text = "Top"
+            bottomText.text = "Bottom"
+            initTop = false
+            initBottom = false
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
