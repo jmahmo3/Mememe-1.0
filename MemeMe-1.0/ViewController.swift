@@ -33,6 +33,10 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         let memedImage : UIImage
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
